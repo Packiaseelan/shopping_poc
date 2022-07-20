@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:shopping_poc/features/cart/view/cart_view.dart';
 import 'package:shopping_poc/features/category/view/category_view.dart';
 import 'package:shopping_poc/features/dashboard/view/dashboard_view.dart';
+import 'package:shopping_poc/features/product_details/view/product_details_view.dart';
 
 class AppRouteManager extends IRouteManager {
   static const dashboard = 'dashboard';
   static const cart = 'cart';
   static const category = 'category';
+  static const productDetails = 'productDetails';
 
   @override
   Widget getView(RouteSettings settings) {
@@ -23,6 +25,9 @@ class AppRouteManager extends IRouteManager {
         return CategoryView(
           args: args,
         );
+
+      case productDetails:
+        return ProductDetailsView(args: args);
 
       default:
         return super.getView(settings);

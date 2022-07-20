@@ -2,6 +2,7 @@ import 'package:core/ioc/di_container.dart';
 import 'package:shopping_poc/features/cart/coordinator/cart_coordinator.dart';
 import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
 import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
+import 'package:shopping_poc/features/product_details/coordinator/product_details_coordinator.dart';
 import 'package:shopping_poc/features/splash/coordinator/splash_coordinator.dart';
 
 class GlobalModule {
@@ -29,6 +30,10 @@ class GlobalModule {
         CategoryDataProvider(),
         CategoryNavigationHandler(),
       ),
+    );
+
+    DIContainer.container.registerFactory(
+      (container) => ProductDetailsCoordinator(),
     );
   }
 }

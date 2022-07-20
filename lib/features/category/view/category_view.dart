@@ -21,17 +21,20 @@ class CategoryView extends StatelessWidget {
       appBar: AppBar(
         title: Text(state.pageTitle),
       ),
-      body: state.products.isEmpty ? _buildEmpty(state) : _buildList(state),
+      body: state.products.isEmpty ? _buildEmpty(state) : _buildList(state, coordinator),
     );
   }
 
-  Widget _buildList(CategoryState state) {
+  Widget _buildList(CategoryState state, CategoryCoordinator coordinator) {
     return GridView.count(
       crossAxisCount: 2,
       crossAxisSpacing: 10.0,
       mainAxisSpacing: 10,
       children: List.generate(state.products.length, (index) {
-        return ProductTileWidget(product: state.products[index]);
+        return InkWell(
+          onTap: () => coordinator.navigateToDetils(state.products[index]),
+          child: ProductTileWidget(product: state.products[index]),
+        );
       }),
     );
   }
