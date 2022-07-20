@@ -18,6 +18,10 @@ class SplashView extends StatelessWidget {
     SplashState state,
     SplashCoordinator coordinator,
   ) {
-    return const Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Text(state.appName),
+      ),
+    );
   }
 }

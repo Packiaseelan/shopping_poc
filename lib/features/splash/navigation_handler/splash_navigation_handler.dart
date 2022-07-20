@@ -1,14 +1,14 @@
 part of '../coordinator/splash_coordinator.dart';
 
 abstract class ISplashNavigationHandler {
-  void navigateToHome();
+  void navigateToDashboard();
   void navigateToLogin();
 }
 
 class SplashNavigationHandler extends ISplashNavigationHandler {
   @override
-  void navigateToHome() {
-    NavigationManager.navigateTo('app-landing', NavigationType.Replace);
+  void navigateToDashboard() {
+    NavigationManager.navigateTo('app-dashboard', NavigationType.Replace);
   }
   
   @override
