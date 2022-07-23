@@ -1,8 +1,7 @@
 import 'package:core/base_view/base_view.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_poc/config/app_theme.dart';
 import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
-import 'package:shopping_poc/features/common/product_model.dart';
+import 'package:shopping_poc/features/category/view/widgets/product_tile_widget.dart';
 
 class CategoryView extends StatelessWidget {
   final Map<String, dynamic> args;
@@ -33,7 +32,11 @@ class CategoryView extends StatelessWidget {
       children: List.generate(state.products.length, (index) {
         return InkWell(
           onTap: () => coordinator.navigateToDetils(state.products[index]),
-          child: ProductTileWidget(product: state.products[index]),
+          child: ProductTileWidget(
+            product: state.products[index],
+            add: coordinator.addProduct,
+            remove: coordinator.removeProduct,
+          ),
         );
       }),
     );
@@ -42,56 +45,6 @@ class CategoryView extends StatelessWidget {
   Widget _buildEmpty(CategoryState state) {
     return Center(
       child: Text('No Product availale for ${state.pageTitle}'),
-    );
-  }
-}
-
-class ProductTileWidget extends StatelessWidget {
-  final ProductModel product;
-  const ProductTileWidget({Key? key, required this.product}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: AppTheme.primaryColor)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: NetworkImage(product.image),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(product.name, style: Theme.of(context).textTheme.displayMedium),
-                Text('₹ ${product.price}', style: Theme.of(context).textTheme.displayLarge),
-              ],
-            ),
-            const Spacer(),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.blue),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  child: Text('Add'),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }

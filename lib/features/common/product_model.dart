@@ -4,7 +4,7 @@ abstract class BaseProductModel {
   final String name;
   final String image;
   final double price;
-  final int quantity;
+  int quantity;
 
   BaseProductModel({
     required this.id,
@@ -24,4 +24,14 @@ class ProductModel extends BaseProductModel {
     required super.image,
     required super.price,
   });
+
+  void addOne() {
+    super.quantity += 1;
+  }
+
+  void minusOne() {
+    if (super.quantity > 0) {
+      super.quantity -= 1;
+    }
+  }
 }

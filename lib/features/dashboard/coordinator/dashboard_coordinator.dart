@@ -1,6 +1,7 @@
 import 'package:core/base_coordinator/base_coordinator.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:shopping_poc/features/common/cart_service.dart';
 import 'package:shopping_poc/features/common/category_model.dart';
 
 part '../state/dashboard_state.dart';
@@ -14,10 +15,12 @@ class _Constants {
 class DashboardCoordinator extends BaseCoordinator<DashboardState> {
   final IDashboardNavigationHandler _navigationHandler;
   final IDashboardDataProvider _dataProvider;
+  final CartService _cart;
 
   DashboardCoordinator(
     this._navigationHandler,
     this._dataProvider,
+    this._cart,
   ) : super(
           DashboardState(
             pageTitle: _Constants.pageTitle,
