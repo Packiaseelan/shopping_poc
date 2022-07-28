@@ -1,7 +1,7 @@
 import 'package:core/base_view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
-import 'package:shopping_poc/features/category/view/widgets/product_tile_widget.dart';
+import 'package:shopping_poc/features/widgets/product_tile_widget.dart';
 
 class CategoryView extends StatelessWidget {
   final Map<String, dynamic> args;
@@ -20,12 +20,15 @@ class CategoryView extends StatelessWidget {
       appBar: AppBar(
         title: Text(state.pageTitle),
       ),
-      body: state.products.isEmpty ? _buildEmpty(state) : _buildList(state, coordinator),
+      body: state.products.isEmpty ? _buildEmpty(state) : _buildList(context, state, coordinator),
     );
   }
 
-  Widget _buildList(CategoryState state, CategoryCoordinator coordinator) {
+  Widget _buildList(BuildContext context, CategoryState state, CategoryCoordinator coordinator) {
+    double cardWidth = MediaQuery.of(context).size.width * 0.3;
+    double cardHeight = MediaQuery.of(context).size.height * 0.17;
     return GridView.count(
+      childAspectRatio: cardWidth / cardHeight,
       crossAxisCount: 2,
       crossAxisSpacing: 10.0,
       mainAxisSpacing: 10,
