@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:core/base_coordinator/base_coordinator.dart';
+import 'package:core/base_classes/base_coordinator.dart';
 import 'package:core/navigation/navigation_manager.dart';
-import 'package:core/navigation/navigation_type.dart';
 import 'package:shopping_poc/features/common/cart_service.dart';
 import 'package:shopping_poc/features/common/product_model.dart';
 

@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:core/base_coordinator/base_coordinator.dart';
+import 'package:core/base_classes/base_coordinator.dart';
 import 'package:core/navigation/navigation_manager.dart';
-import 'package:core/navigation/navigation_type.dart';
 
 part '../navigation_handler/splash_navigation_handler.dart';
 part '../state/splash_state.dart';

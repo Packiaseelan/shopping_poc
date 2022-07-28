@@ -1,4 +1,4 @@
-import 'package:core/base_view/base_view.dart';
+import 'package:core/base_classes/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_poc/features/cart/coordinator/cart_coordinator.dart';
 import 'package:shopping_poc/features/widgets/add_to_cart_button.dart';

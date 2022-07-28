@@ -1,4 +1,4 @@
-import 'package:core/base_view/base_view.dart';
+import 'package:core/base_classes/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
 import 'package:shopping_poc/features/widgets/product_tile_widget.dart';

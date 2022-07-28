@@ -17,6 +17,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
+branchName: &branchName main
+
 environment:
   sdk: ">=2.17.3 <3.0.0"
 
@@ -36,11 +38,46 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   core:
-    path: app_features/core/
+    git:
+      url: https://github.com/Packiaseelan/hex_f_core.git
+      ref: *branchName
+      path: core/app-mobile-core/src/
+
+  widget_library:
+    git:
+      url: https://github.com/Packiaseelan/hex_f_core.git
+      ref: *branchName
+      path: widgets/app-mobile-widgets/src
+
+  network_manager:
+    git:
+      url: https://github.com/Packiaseelan/hex_f_core.git
+      ref: *branchName
+      path: network_manager/app-mobile-networkmanager/src
+
+  task_manager:
+    git:
+      url: https://github.com/Packiaseelan/hex_f_core.git
+      ref: *branchName
+      path: task_manager/app-mobile-taskmanager/src
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  core:
+    path: ../hex_f_core/core/app-mobile-core/src/
+
+  widget_library:
+    path: ../hex_f_core/widgets/app-mobile-widgets/src/
+
+  network_manager:
+    path: ../hex_f_core/network_manager/app-mobile-networkmanager/src/
+
+  task_manager:
+    path: ../hex_f_core/task_manager/app-mobile-taskmanager/src/
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,4 +1,4 @@
-import 'package:core/base_coordinator/base_coordinator.dart';
+import 'package:core/base_classes/base_coordinator.dart';
 import 'package:shopping_poc/features/common/cart_service.dart';
 import 'package:shopping_poc/features/common/product_model.dart';
 
