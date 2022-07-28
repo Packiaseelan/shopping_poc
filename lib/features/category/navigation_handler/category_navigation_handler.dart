@@ -8,7 +8,7 @@ class CategoryNavigationHandler extends ICategoryNavigationHandler {
   @override
   void navigateToDetils(ProductModel product) {
     NavigationManager.navigateTo(
-      'app-productDetails',
+      '${ModuleIdentifiers.global}-${GlobalRoutes.productDetails}',
       NavigationType.Push,
       arguments: {'product': product},
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_poc/config/app_theme.dart';
 import 'package:shopping_poc/features/common/product_model.dart';
 import 'package:shopping_poc/features/widgets/add_to_cart_button.dart';
 
@@ -20,7 +19,7 @@ class ProductTileWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: AppTheme.primaryColor),
+        border: Border.all(color: Theme.of(context).primaryColor),
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

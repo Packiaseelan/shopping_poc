@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_poc/config/app_theme.dart';
 import 'package:shopping_poc/features/common/category_model.dart';
 
 class CategoriesWidget extends StatelessWidget {
@@ -50,7 +49,7 @@ class CategoryTileWidget extends StatelessWidget {
         width: 150,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          border: Border.all(color: AppTheme.primaryColor),
+          border: Border.all(color: Theme.of(context).primaryColor),
           image: DecorationImage(
             image: NetworkImage(category.image),
             fit: BoxFit.cover,

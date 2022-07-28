@@ -8,11 +8,17 @@ abstract class ISplashNavigationHandler {
 class SplashNavigationHandler extends ISplashNavigationHandler {
   @override
   void navigateToDashboard() {
-    NavigationManager.navigateTo('app-dashboard', NavigationType.Replace);
+    NavigationManager.navigateTo(
+      '${ModuleIdentifiers.global}-${GlobalRoutes.dashboard}',
+      NavigationType.Replace,
+    );
   }
-  
+
   @override
   void navigateToLogin() {
-    NavigationManager.navigateTo('app-login', NavigationType.Replace);
+    NavigationManager.navigateTo(
+      '${ModuleIdentifiers.global}-${GlobalRoutes.login}',
+      NavigationType.Replace,
+    );
   }
 }

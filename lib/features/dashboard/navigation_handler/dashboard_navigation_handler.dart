@@ -8,13 +8,13 @@ abstract class IDashboardNavigationHandler {
 class DashboardNavigationHandler extends IDashboardNavigationHandler {
   @override
   void navigateToCart() {
-    NavigationManager.navigateTo('app-cart', NavigationType.Push);
+    NavigationManager.navigateTo('${ModuleIdentifiers.global}-${GlobalRoutes.cart}', NavigationType.Push);
   }
 
   @override
   void navigateToCategory(String categoryId) {
     NavigationManager.navigateTo(
-      'app-category',
+      '${ModuleIdentifiers.global}-${GlobalRoutes.category}',
       NavigationType.Push,
       arguments: {'category_id': categoryId},
     );

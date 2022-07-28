@@ -1,5 +1,5 @@
 name: shopping_poc
-description: A new Flutter project.
+description: Grocery Shopping POC Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -36,6 +36,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
+  shared_dependencies:
+    path: app_features/shared_dependencies
+
+  widgets:
+    path: app_features/widgets
 
   core:
     git:
@@ -98,8 +104,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/configuration/
+    - assets/network-mocks/
+    - assets/styles/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
