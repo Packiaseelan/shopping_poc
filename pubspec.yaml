@@ -147,7 +147,7 @@ flutter:
       fonts:
         - asset: assets/fonts/Roboto-MediumItalic.ttf
 
-    - family: RobotoReg
+    - family: RobotoRg
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
 

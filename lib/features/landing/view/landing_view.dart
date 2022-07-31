@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:core/base_classes/base_view.dart';
 import 'package:shopping_poc/features/dashboard/view/dashboard_view.dart';
-import 'package:widget_library/image/hex_image_widget.dart';
 import 'package:widget_library/scaffold/hex_scaffold.dart';
 
 import 'package:shopping_poc/features/landing/coordinator/landing_coordinator.dart';
+import 'package:shopping_poc/features/landing/view/widgets/bottom_navigation.dart';
+
+class _Constants {
+  static const themeName = 'landing_screen';
+}
 
 class LandingView extends StatelessWidget {
   const LandingView({Key? key}) : super(key: key);
@@ -20,7 +24,7 @@ class LandingView extends StatelessWidget {
 
   Widget _builder(BuildContext context, LandingState state, LandingCoordinator coordinator) {
     return HexScaffold(
-      themeName: 'landing_screen',
+      themeName: _Constants.themeName,
       body: _buildBody(state),
       bottomNavigationBar: BottomNavigation(
         currentTab: state.currentTab,
@@ -45,40 +49,3 @@ class LandingView extends StatelessWidget {
   }
 }
 
-class BottomNavigation extends StatelessWidget {
-  final TabItem currentTab;
-  final ValueChanged<TabItem> onSelectTab;
-
-  const BottomNavigation({
-    Key? key,
-    required this.currentTab,
-    required this.onSelectTab,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentTab.index,
-      selectedLabelStyle: Theme.of(context).textTheme.subtitle1,
-      unselectedLabelStyle: Theme.of(context).textTheme.subtitle2,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
-      selectedItemColor: Theme.of(context).textTheme.subtitle1?.color,
-      unselectedItemColor: Theme.of(context).textTheme.subtitle2?.color,
-      type: BottomNavigationBarType.fixed,
-      items: TabItem.values.map((e) => _buildItem(e)).toList(),
-      onTap: (index) => onSelectTab(TabItem.values[index]),
-    );
-  }
-
-  BottomNavigationBarItem _buildItem(TabItem tab) {
-    return BottomNavigationBarItem(
-      icon: HexImage(
-        HexImageModel.asset(
-          imagePath: currentTab == tab ? tab.selectedIconPath : tab.iconPath,
-        ),
-      ),
-      label: tab.name,
-    );
-  }
-}
