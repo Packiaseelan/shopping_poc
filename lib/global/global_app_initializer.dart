@@ -8,6 +8,7 @@ import 'package:shopping_poc/features/cart/coordinator/cart_coordinator.dart';
 import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
 import 'package:shopping_poc/features/common/cart_service.dart';
 import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
+import 'package:shopping_poc/features/landing/coordinator/landing_coordinator.dart';
 import 'package:shopping_poc/features/product_details/coordinator/product_details_coordinator.dart';
 import 'package:shopping_poc/features/splash/coordinator/splash_coordinator.dart';
 import 'package:shopping_poc/global/route_manager/global_route_manager.dart';
@@ -72,6 +73,10 @@ class GlobalAppInitializer {
       (container) => ProductDetailsCoordinator(
         container.resolve<CartService>(),
       ),
+    );
+
+    DIContainer.container.registerFactory(
+      (container) => LandingCoordinator(),
     );
   }
 

@@ -37,8 +37,8 @@ class ProductTileWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 0),
-            Text(product.name, style: Theme.of(context).textTheme.displayMedium),
-            Text('₹ ${product.price}', style: Theme.of(context).textTheme.displayLarge),
+            Text(product.name, style: Theme.of(context).textTheme.headline5),
+            Text('₹ ${product.price}', style: Theme.of(context).textTheme.headline4),
             const Spacer(),
             AddToCartButtonWidget(
               value: product.quantity,

@@ -1,7 +1,7 @@
 {
     "colors": {
-      "primary": "0xFFFFFFFF",
-      "secondary": "0xFF0F1A38",
+      "primary": "0xFF3A3A3A",
+      "secondary": "0xFF0BAB64",
       "tertiary": "0xFF5500F9",
       "quaternary": "0xFFF7D7D0",
       "quinary": "0xFFF9D100",
@@ -22,7 +22,7 @@
         "primaryColorDark": "0xFF0F1A38",
         "primaryColorLight": "0xFFF7D7D0",
         "splashColor": "0xFFFCFCFA",
-        "scaffoldBackgroundColor": "0xFF9B9B9B",
+        "scaffoldBackgroundColor": "0xFFF5F5F5",
         "backgroundColor": "0xFFFFFFFF",
         "errorColor": "0xFFF90069",
         "bottomAppBarColor": "0xFFFFFFFF",
@@ -41,14 +41,14 @@
         },
         "appBarTheme": {
           "foregroundColor": "0xFF0F1A38",
-          "backgroundColor": "0xFFFFFFFF",
+          "backgroundColor": "0xFFF5F5F5",
           "iconTheme": {
             "color": "0xFF0C142B"
           },
           "titleTextStyle": {
             "color": "0xFF0F1A38",
             "fontFamily": "AktivGrotesqueMd",
-            "fontSize": 17
+            "fontSize": 17  
           },
           "textTheme": {
             "bodyText1": {
@@ -182,6 +182,71 @@
             "color": "0xFF0F1A38",
             "fontFamily": "AktivGrotesqueMd",
             "fontSize": 14
+          }
+        }
+      },
+      {
+        "screenName": "landing_screen",
+        "backgroundColor": "0xFFFFFFFF",
+        "textTheme": {
+          "subtitle1": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoMd",
+            "fontSize": 12
+          },
+          "subtitle2": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoReg",
+            "fontSize": 12
+          }
+        }
+      },
+      {
+        "screenName": "product_detail_tile",
+        "backgroundColor": "0xFFA8D29F",
+        "scaffoldBackgroundColor": "0xFFA8D29F",
+        "textTheme": {
+          "headline3": {
+            "color": "0xFF0BAB64",
+            "fontFamily": "RobotoMd",
+            "fontSize": 12,
+            "letterSpacing": 0.2
+          },
+          "headline4": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoMd",
+            "fontSize": 12
+          },
+          "headline6": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoReg",
+            "fontSize": 10
+          },
+          "subtitle1": {
+            "color": "0xFFFFFFFF",
+            "fontFamily": "RobotoBo",
+            "fontSize": 10
+          },
+          "subtitle2": {
+            "color": "0xFF0BAB64",
+            "fontFamily": "RobotoReg",
+            "fontSize": 8,
+            "letterSpacing": 0.2
+          },
+          "bodyText1": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoLt",
+            "fontSize": 10
+          },
+          "bodyText2": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoTh",
+            "fontSize": 10
+          },
+          "caption": {
+            "color": "0xFFFFFFFF",
+            "fontFamily": "AktivGrotesqueRg",
+            "fontSize": 6
           }
         }
       }

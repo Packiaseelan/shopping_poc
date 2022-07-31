@@ -60,7 +60,7 @@ class CategoryTileWidget extends StatelessWidget {
           child: Center(
             child: Text(
               category.name,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
         ),

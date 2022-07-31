@@ -9,7 +9,7 @@ class SplashNavigationHandler extends ISplashNavigationHandler {
   @override
   void navigateToDashboard() {
     NavigationManager.navigateTo(
-      '${ModuleIdentifiers.global}-${GlobalRoutes.dashboard}',
+      '${ModuleIdentifiers.global}-${GlobalRoutes.landing}',
       NavigationType.Replace,
     );
   }
