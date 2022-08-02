@@ -2,7 +2,7 @@
     "colors": {
       "primary": "0xFF3A3A3A",
       "secondary": "0xFF0BAB64",
-      "tertiary": "0xFF5500F9",
+      "tertiary": "0xFF0BAB64",
       "quaternary": "0xFFF7D7D0",
       "quinary": "0xFFF9D100",
       "senary": "0xFFF4F4FA",
@@ -186,8 +186,31 @@
         }
       },
       {
+        "screenName": "dashboard",
+        "backgroundColor": "0xFFEFF5F3",
+        "splashColor": "0xFF0BAB64",
+        "colors": {
+          "primary": "0xFFFF0000"
+        },
+        "iconTheme": {
+          "color": "0xFF0BAB64"
+        },
+        "textTheme": {
+          "caption": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoRg",
+            "fontSize": 12,
+            "fontWeight": 400,
+            "opacity": 0.5
+          }
+        }
+      },
+      {
         "screenName": "landing_screen",
         "backgroundColor": "0xFFFFFFFF",
+        "iconTheme": {
+          "color": "0xFF0BAB64"
+        },
         "textTheme": {
           "subtitle1": {
             "color": "0xFF3A3A3A",
@@ -205,7 +228,14 @@
         "screenName": "product_detail_tile",
         "backgroundColor": "0xFFA8D29F",
         "scaffoldBackgroundColor": "0xFFA8D29F",
+        "splashColor": "0xFF0BAB64",
         "textTheme": {
+          "headline2": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoMd",
+            "fontSize": 16,
+            "letterSpacing": 0.2
+          },
           "headline3": {
             "color": "0xFF0BAB64",
             "fontFamily": "RobotoMd",

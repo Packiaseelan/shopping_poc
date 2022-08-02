@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_poc/features/common/product_model.dart';
+import 'package:shopping_poc/features/common/models/product_model.dart';
 import 'package:shopping_poc/features/widgets/add_to_cart_button.dart';
 
 class ProductTileWidget extends StatelessWidget {

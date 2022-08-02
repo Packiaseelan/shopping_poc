@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:core/base_classes/base_view.dart';
+import 'package:shopping_poc/features/cart/view/cart_view.dart';
 import 'package:shopping_poc/features/dashboard/view/dashboard_view.dart';
 import 'package:widget_library/scaffold/hex_scaffold.dart';
 
@@ -25,7 +26,7 @@ class LandingView extends StatelessWidget {
   Widget _builder(BuildContext context, LandingState state, LandingCoordinator coordinator) {
     return HexScaffold(
       themeName: _Constants.themeName,
-      body: _buildBody(state),
+      builder: (context) => _buildBody(state),
       bottomNavigationBar: BottomNavigation(
         currentTab: state.currentTab,
         onSelectTab: coordinator.onSelectTab,
@@ -42,7 +43,7 @@ class LandingView extends StatelessWidget {
       case TabItem.search:
         return const Center(child: Text('Search'));
       case TabItem.cart:
-        return const Center(child: Text('Cart'));
+        return const CartView();
       case TabItem.profile:
         return const Center(child: Text('Profile'));
     }

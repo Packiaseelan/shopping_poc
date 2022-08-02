@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_poc/features/common/category_model.dart';
+import 'package:shopping_poc/features/common/models/category_model.dart';
 
 class CategoriesWidget extends StatelessWidget {
   final List<CategoryModel> categories;

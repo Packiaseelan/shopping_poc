@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:shopping_poc/features/common/product_model.dart';
+import 'package:shopping_poc/features/common/models/product_model.dart';
 
 class CartService {
   final _streamControllers = <String, StreamController<ProductModel>>{};
@@ -60,7 +60,6 @@ class CartService {
   }
 
   void removeProduct(ProductModel product) {
-    // ProductModel existing = product;
     if (products.isNotEmpty) {
       final existing = products.firstWhere((p) => p.id == product.id);
       existing.minusOne();

@@ -2,7 +2,9 @@ import 'package:core/base_classes/base_coordinator.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:shared_dependencies/module_identifiers.dart';
 import 'package:shopping_poc/features/common/cart_service.dart';
-import 'package:shopping_poc/features/common/category_model.dart';
+import 'package:shopping_poc/features/common/mock_data/mock_data.dart';
+import 'package:shopping_poc/features/common/models/category_model.dart';
+import 'package:shopping_poc/features/common/models/product_model.dart';
 import 'package:shopping_poc/global/route_manager/global_route_manager.dart';
 
 part '../state/dashboard_state.dart';
@@ -25,12 +27,14 @@ class DashboardCoordinator extends BaseCoordinator<DashboardState> {
   ) : super(
           DashboardState(
             pageTitle: _Constants.pageTitle,
+            trendingNearYou: TrendingNearYouState(title: 'Trending Near You'),
           ),
         );
 
   void initialize() {
     _updateBanner();
     _updateCategories();
+    _getTrendings();
   }
 
   void navigateToCart() {
@@ -46,6 +50,22 @@ class DashboardCoordinator extends BaseCoordinator<DashboardState> {
   void _updateCategories() {
     _dataProvider.fetchCategories().then((categories) {
       state = state.copyWith(categories: categories);
+    });
+  }
+
+  void _getTrendings() {
+    state = state.copyWith(
+      trendingNearYou: state.trendingNearYou.copyWith(
+        isLoading: true,
+      ),
+    );
+    _dataProvider.fetchTrendingNearYou().then((value) {
+      state = state.copyWith(
+        trendingNearYou: state.trendingNearYou.copyWith(
+          isLoading: false,
+          trendings: value,
+        ),
+      );
     });
   }
 }
