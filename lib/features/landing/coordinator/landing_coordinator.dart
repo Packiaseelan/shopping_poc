@@ -1,6 +1,8 @@
 import 'package:core/base_classes/base_coordinator.dart';
+import 'package:core/navigation/navigation_manager.dart';
 
 part '../state/landing_state.dart';
+part '../navigation_handler/landing_navigation_handler.dart';
 
 enum TabItem { home, category, search, cart, profile }
 
@@ -52,7 +54,9 @@ extension TabItemEx on TabItem {
 }
 
 class LandingCoordinator extends BaseCoordinator<LandingState> {
-  LandingCoordinator()
+  final ILandingNavigationHandler _navigationHandler;
+
+  LandingCoordinator(this._navigationHandler)
       : super(
           LandingState(
             currentTab: TabItem.home,
@@ -62,6 +66,10 @@ class LandingCoordinator extends BaseCoordinator<LandingState> {
   void initialize() {}
 
   void onSelectTab(TabItem tab) {
-    state = state.copyWith(currentTab: tab);
+    if (tab == TabItem.cart) {
+      _navigationHandler.navigateToCart();
+    } else {
+      state = state.copyWith(currentTab: tab);
+    }
   }
 }

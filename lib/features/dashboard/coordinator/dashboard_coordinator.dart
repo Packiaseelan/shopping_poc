@@ -13,6 +13,7 @@ part '../data_provider/dashboard_data_provider.dart';
 
 class _Constants {
   static const pageTitle = 'Shopping App';
+  static const dashboardKey = 'dashboard';
 }
 
 class DashboardCoordinator extends BaseCoordinator<DashboardState> {
@@ -32,10 +33,50 @@ class DashboardCoordinator extends BaseCoordinator<DashboardState> {
         );
 
   void initialize() {
+    _addListener();
     _updateBanner();
     _updateCategories();
     _getTrendings();
   }
+
+  void _addListener() {
+    _cart.addStreamController(_Constants.dashboardKey);
+    final stream = _cart.getStream(_Constants.dashboardKey)!;
+    stream.listen((event) {
+      final products = state.trendingNearYou.trendings;
+
+      if (event != null) {
+        final index = products.indexWhere((p) => p.id == event.id);
+        if (index > 0) {
+          products[index].quantity = event.quantity;
+        }
+      } else {
+        for (var prod in products) {
+          prod.quantity = 0;
+        }
+      }
+
+      state = state.copyWith(
+        trendingNearYou: state.trendingNearYou.copyWith(trendings: products),
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _cart.removeStreamCotroller(_Constants.dashboardKey);
+    super.dispose();
+  }
+
+  void addProduct(ProductModel product) {
+    _cart.addProduct(product);
+  }
+
+  void removeProduct(ProductModel product) {
+    _cart.removeProduct(product);
+  }
+
+  void clearCart() => _cart.clearCart();
 
   void navigateToCart() {
     _navigationHandler.navigateToCart();
@@ -60,6 +101,14 @@ class DashboardCoordinator extends BaseCoordinator<DashboardState> {
       ),
     );
     _dataProvider.fetchTrendingNearYou().then((value) {
+      for (var p in _cart.products) {
+        var catProds = value.where((e) => e.id == p.id);
+        if (catProds.isNotEmpty) {
+          var a = catProds.first;
+          a.quantity = p.quantity;
+        }
+      }
+
       state = state.copyWith(
         trendingNearYou: state.trendingNearYou.copyWith(
           isLoading: false,

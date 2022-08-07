@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:core/base_classes/base_view.dart';
+import 'package:shopping_poc/features/common/mixins/bottom_cart_widget.dart';
 import 'package:shopping_poc/features/common/models/product_model.dart';
 import 'package:shopping_poc/features/dashboard/view/widgets/banner_widget.dart';
+import 'package:shopping_poc/features/dashboard/view/widgets/header_widget.dart';
 import 'package:shopping_poc/features/dashboard/view/widgets/trending_near_widget.dart';
 import 'package:widget_library/buttons/icon_text_button.dart';
 import 'package:widget_library/hex_text/hex_text.dart';
@@ -16,8 +18,8 @@ import 'package:widgets/add_to_cart_button_widget.dart';
 import 'package:widgets/tiles/trending_tile_widget.dart';
 import 'package:widgets/app_search_bar.dart';
 
-class DashboardView extends StatelessWidget {
-  const DashboardView({Key? key}) : super(key: key);
+class DashboardView extends StatelessWidget with BottomCart{
+  DashboardView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class DashboardView extends StatelessWidget {
     return HexScaffold(
       themeName: 'dashboard',
       builder: (context) => buildBody(context, state, coordinator),
+      bottomChild: bottom(),
     );
   }
 
@@ -44,7 +47,7 @@ class DashboardView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 80),
             TrendingNearWidget(
               attribute: _createTrendingAttribute(context, state.trendingNearYou, coordinator),
             ),
@@ -101,8 +104,10 @@ class DashboardView extends StatelessWidget {
         styleVariant: HexTextStyleVariant.headline4,
       ),
       addTocart: AddToCartButtonAttribute(
-        onAdd: () {},
-        onRemove: () {},
+        onAdd: () => coordinator.addProduct(product),
+        onRemove: () => coordinator.removeProduct(product),
+        quanity: product.quantity > 0 ? product.quantity.toString() : null,
+        onCustomise: product.hasCustomise ? () {} : null,
       ),
     );
   }
@@ -121,16 +126,17 @@ class DashboardView extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 0),
               child: AppSearchBar(
                 attribute: AppSearchBarAtribute(
-                    hintText: 'Search for fruits, vegetables,  and more',
-                    backgroundColor: Theme.of(context).backgroundColor,
-                    prefixIconPath: 'assets/icons/search-selected.svg'),
+                  hintText: 'Search for fruits, vegetables,  and more',
+                  backgroundColor: Theme.of(context).backgroundColor,
+                  prefixIconPath: 'assets/icons/search-selected.svg',
+                ),
               ),
             ),
           ),
         ),
         pinned: true,
         floating: false,
-        expandedHeight: MediaQuery.of(context).size.height * 0.37,
+        expandedHeight: (MediaQuery.of(context).size.height * 0.33) + MediaQuery.of(context).padding.top,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         flexibleSpace: FlexibleSpaceBar(
           collapseMode: CollapseMode.pin,
@@ -139,6 +145,7 @@ class DashboardView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                const HeaderWidget(),
                 BannerWidget(),
               ],
             ),

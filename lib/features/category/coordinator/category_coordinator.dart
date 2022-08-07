@@ -42,8 +42,14 @@ class CategoryCoordinator extends BaseCoordinator<CategoryState> {
     final stream = _cart.getStream(_Constants.cartCategoryKey)!;
     stream.listen((event) {
       final products = state.products;
-      final product  = products.firstWhere((e) => e.id == event.id);
-      product.quantity = event.quantity;
+      
+      if (event != null) {
+        products[products.indexWhere((p) => p.id == event.id)].quantity = event.quantity;
+      } else {
+        for (var prod in products) {
+          prod.quantity = 0;
+        }
+      }
       state = state.copyWith(products: products);
      });
   }

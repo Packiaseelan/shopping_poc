@@ -27,7 +27,7 @@ class AddToCartButtonAttribute {
     required this.onAdd,
     required this.onRemove,
     this.onCustomise,
-  }) : assert(add == null && quanity == null, _Constants.nullErrorMessage);
+  }) : assert(add == null || quanity == null, _Constants.nullErrorMessage);
 }
 
 class AddToCartButtonWidget extends StatelessWidget {
@@ -52,20 +52,32 @@ class AddToCartButtonWidget extends StatelessWidget {
         ],
         color: Colors.white,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildRemoveButton(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              HexText(text: TextUIDataModel('ADD', styleVariant: HexTextStyleVariant.headline3)),
-              HexText(text: TextUIDataModel('Customise', styleVariant: HexTextStyleVariant.subtitle2)),
-            ],
-          ),
-          _buildAddButton(),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _buildRemoveButton(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (attribute.quanity != null)
+                  HexText(text: TextUIDataModel('${attribute.quanity}', styleVariant: HexTextStyleVariant.headline3)),
+                if (attribute.quanity == null)
+                  InkWell(
+                    onTap: attribute.onAdd,
+                    child: HexText(
+                      text: TextUIDataModel('ADD', styleVariant: HexTextStyleVariant.headline3),
+                    ),
+                  ),
+                if (attribute.onCustomise != null)
+                  HexText(text: TextUIDataModel('Customise', styleVariant: HexTextStyleVariant.subtitle2)),
+              ],
+            ),
+            _buildAddButton(),
+          ],
+        ),
       ),
     );
   }

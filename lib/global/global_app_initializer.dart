@@ -4,6 +4,7 @@ import 'package:core/storage/i_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:network_manager/network_manager.dart';
 import 'package:shared_dependencies/shared_dependencies.dart';
+// import 'package:shopping_poc/features/bottom_cart/coordinator/bottom_cart_coordinator.dart';
 import 'package:shopping_poc/features/cart/coordinator/cart_coordinator.dart';
 import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
 import 'package:shopping_poc/features/common/cart_service.dart';
@@ -43,7 +44,6 @@ class GlobalAppInitializer {
     DIContainer.container.registerFactory(
       (container) => SplashCoordinator(
         SplashNavigationHandler(),
-        SplashViewModel(),
       ),
     );
 
@@ -76,8 +76,17 @@ class GlobalAppInitializer {
     );
 
     DIContainer.container.registerFactory(
-      (container) => LandingCoordinator(),
+      (container) => LandingCoordinator(
+        LandingNavigationHandler(),
+      ),
     );
+
+    // DIContainer.container.registerFactory(
+    //   (container) => BottomCartCoordinator(
+    //     container.resolve<CartService>(),
+    //     BottomCartNavigationHandler(),
+    //   ),
+    // );
   }
 
   void _initializeEnvironmentBasedDependencies() async {

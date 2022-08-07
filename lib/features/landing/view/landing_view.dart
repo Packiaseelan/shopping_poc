@@ -37,7 +37,7 @@ class LandingView extends StatelessWidget {
   Widget _buildBody(LandingState state) {
     switch (state.currentTab) {
       case TabItem.home:
-        return const DashboardView();
+        return DashboardView();
       case TabItem.category:
         return const Center(child: Text('Category'));
       case TabItem.search:

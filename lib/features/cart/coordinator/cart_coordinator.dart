@@ -16,6 +16,7 @@ class CartCoordinator extends BaseCoordinator<CartState> {
   ) : super(
           CartState(
             pageTitle: 'Cart',
+            subTitile : 'Review Cart'
           ),
         );
 
@@ -37,6 +38,14 @@ class CartCoordinator extends BaseCoordinator<CartState> {
   void dispose() {
     _cart.removeStreamCotroller(_Constants.cartCartKey);
     super.dispose();
+  }
+
+  void crement(int value, ProductModel product) {
+    if (value > 0) {
+      addProduct(product);
+    } else {
+      removeProduct(product);
+    }
   }
 
   void addProduct(ProductModel product) {

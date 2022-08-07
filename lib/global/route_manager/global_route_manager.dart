@@ -17,7 +17,7 @@ class GlobalRouteManager extends IRouteManager {
         return const LandingView();
 
       case GlobalRoutes.dashboard:
-        return const DashboardView();
+        return DashboardView();
 
       case GlobalRoutes.cart:
         return const CartView();

@@ -1,7 +1,9 @@
-import 'package:core/base_classes/base_view.dart';
 import 'package:flutter/material.dart';
+
+import 'package:core/base_classes/base_view.dart';
+import 'package:widget_library/scaffold/hex_scaffold.dart';
+
 import 'package:shopping_poc/features/cart/coordinator/cart_coordinator.dart';
-import 'package:shopping_poc/features/widgets/add_to_cart_button.dart';
 
 class CartView extends StatelessWidget {
   const CartView({Key? key}) : super(key: key);
@@ -15,9 +17,23 @@ class CartView extends StatelessWidget {
   }
 
   Widget _builder(BuildContext context, CartState state, CartCoordinator coordinator) {
-    return Scaffold(
-      appBar: AppBar(title: Text(state.pageTitle)),
-      body: _buildBody(context, state, coordinator),
+    return HexScaffold(
+      themeName: 'cart_screen',
+      appBarBuilder: (context) => _buildAppBar(state),
+      builder: (context) => _buildBody(context, state, coordinator),
+    );
+  }
+
+  PreferredSizeWidget _buildAppBar(CartState state) {
+    return AppBar(
+      elevation: 0,
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(state.pageTitle),
+          Text(state.subTitile),
+        ],
+      ),
     );
   }
 
@@ -26,45 +42,128 @@ class CartView extends StatelessWidget {
   }
 
   Widget _buildCartItems(CartState state, CartCoordinator coordinator) {
-    return ListView.builder(
-      itemCount: state.products.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Image.network(
-                state.products[index].image,
-                height: 100,
-                width: 100,
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Container(
+        decoration: const BoxDecoration(color: Colors.white),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: state.products.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
                 children: [
-                  Row(
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor, borderRadius: BorderRadius.circular(2)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(2),
+                        child: Image.network(
+                          state.products[index].image,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(state.products[index].name),
-                      Text('${state.products[index].price}'),
+                      Row(
+                        children: [
+                          Text(state.products[index].name),
+                          Text('${state.products[index].price}'),
+                        ],
+                      ),
                     ],
                   ),
-                  Text('₹ ${state.products[index].price * state.products[index].quantity}', style: Theme.of(context).textTheme.headline6,),
-                  AddToCartButtonWidget(
-                    value: state.products[index].quantity,
-                    onAdd: () => coordinator.addProduct(state.products[index]),
-                    onRemove: () => coordinator.removeProduct(state.products[index]),
-                  ),
+                  const Spacer(),
+                  Column(
+                    children: [
+                      Text(
+                        '₹ ${state.products[index].price * state.products[index].quantity}',
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      PillShapeCounter(
+                        value: state.products[index].quantity,
+                        onUpdate: (v) => coordinator.crement(v, state.products[index]),
+                      ),
+                    ],
+                  )
                 ],
               ),
-            ],
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 
   Widget _buildNoItem() {
     return const Center(child: Text('No items in your cart'));
+  }
+}
+
+class PillShapeCounter extends StatelessWidget {
+  final int value;
+  final Function(int) onUpdate;
+
+  const PillShapeCounter({
+    Key? key,
+    required this.value,
+    required this.onUpdate,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 22,
+      width: 70,
+      decoration: BoxDecoration(
+        color: const Color(0xFFA8D29F).withOpacity(0.25),
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: const Color(0xFFA8D29F)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _iconButton(Icons.remove, -1),
+          Text(
+            '$value',
+            style: const TextStyle(fontSize: 12, color: Colors.green),
+          ),
+          _iconButton(Icons.add, 1, isLeft: false),
+        ],
+      ),
+    );
+  }
+
+  Widget _iconButton(IconData icon, int crement, {bool isLeft = true}) {
+    return ClipRRect(
+      borderRadius: BorderRadius.horizontal(
+        left: isLeft ? const Radius.circular(15) : Radius.zero,
+        right: !isLeft ? const Radius.circular(15) : Radius.zero,
+      ),
+      child: InkWell(
+        onTap: () => onUpdate(crement),
+        child: Container(
+          height: 22,
+          decoration: const BoxDecoration(color: Colors.green),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: Icon(
+              icon,
+              size: 12,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

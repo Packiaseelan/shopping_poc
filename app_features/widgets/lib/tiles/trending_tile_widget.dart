@@ -77,12 +77,7 @@ class TrendingTileWidget extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 4),
-                      AddToCartButtonWidget(
-                        attribute: AddToCartButtonAttribute(
-                          onAdd: () {},
-                          onRemove: () {},
-                        ),
-                      )
+                      AddToCartButtonWidget(attribute: attribute.addTocart)
                     ],
                   ),
                 ),

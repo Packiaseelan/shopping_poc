@@ -1,11 +1,15 @@
-import 'package:core/base_classes/base_view.dart';
 import 'package:flutter/material.dart';
+
+import 'package:core/base_classes/base_view.dart';
+import 'package:shopping_poc/features/common/mixins/bottom_cart_widget.dart';
+import 'package:widget_library/scaffold/hex_scaffold.dart';
+
 import 'package:shopping_poc/features/product_details/coordinator/product_details_coordinator.dart';
 import 'package:shopping_poc/features/widgets/add_to_cart_button.dart';
 
-class ProductDetailsView extends StatelessWidget {
+class ProductDetailsView extends StatelessWidget with BottomCart{
   final Map<String, dynamic> args;
-  const ProductDetailsView({Key? key, required this.args}) : super(key: key);
+  ProductDetailsView({Key? key, required this.args}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +20,18 @@ class ProductDetailsView extends StatelessWidget {
   }
 
   Widget _builder(BuildContext context, ProductDetailsState state, ProductDetailsCoordinator coordinator) {
-    return Scaffold(
-      appBar: AppBar(title: Text(state.pageTitle)),
-      body: _buildBody(context, state, coordinator),
+    return HexScaffold(
+      appBarBuilder: (context) => _buildAppBar(state),
+      builder: (context) => _buildBody(context, state, coordinator),
+      // bottomChild: const BottomCartView(),
+      bottomChild: bottom(),
+    );
+  }
+
+  PreferredSizeWidget _buildAppBar(ProductDetailsState state) {
+    return AppBar(
+      elevation: 0,
+      title: Text(state.pageTitle),
     );
   }
 

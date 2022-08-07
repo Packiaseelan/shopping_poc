@@ -29,12 +29,14 @@ var categories = [
 
 var vegs = [
   ProductModel(
-      id: 'id_1',
-      categoryId: 'cat_2',
-      name: 'Tomato',
-      image:
-          'https://img.freepik.com/premium-photo/red-tomatoes-vegetables-are-stacked-top-each-other_91660-288.jpg?w=2000',
-      price: 10.0),
+    id: 'id_1',
+    categoryId: 'cat_2',
+    name: 'Tomato',
+    image:
+        'https://img.freepik.com/premium-photo/red-tomatoes-vegetables-are-stacked-top-each-other_91660-288.jpg?w=2000',
+    price: 10.0,
+    customise: CustomiseUnit(type: CustomiseUnitType.kg),
+  ),
   ProductModel(
       id: 'id_2',
       categoryId: 'cat_2',

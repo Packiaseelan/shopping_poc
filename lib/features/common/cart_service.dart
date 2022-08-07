@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:shopping_poc/features/common/models/product_model.dart';
 
 class CartService {
-  final _streamControllers = <String, StreamController<ProductModel>>{};
+  final _streamControllers = <String, StreamController<ProductModel?>>{};
 
   List<ProductModel> products = [];
 
@@ -20,14 +20,19 @@ class CartService {
   void clearCart() {
     products = [];
     cartAmount = 0;
+    // clear all screens
+    for (var element in _streamControllers.values) {
+      element.add(null);
+    }
   }
 
-  void addStreamController(String key) {
-    final streamController = StreamController<ProductModel>.broadcast();
+  Stream<ProductModel?> addStreamController(String key) {
+    final streamController = StreamController<ProductModel?>.broadcast();
     _streamControllers[key] = streamController;
+    return streamController.stream;
   }
 
-  Stream<ProductModel>? getStream(String key) {
+  Stream<ProductModel?>? getStream(String key) {
     if (_streamControllers.containsKey(key)) {
       return _streamControllers[key]!.stream;
     }

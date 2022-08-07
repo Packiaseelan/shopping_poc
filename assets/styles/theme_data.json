@@ -202,6 +202,13 @@
             "fontSize": 12,
             "fontWeight": 400,
             "opacity": 0.5
+          },
+          "overline": {
+            "color": "0xFFFF0000",
+            "fontFamily": "Roboto",
+            "fontSize": 8,
+            "fontWeight": 400,
+            "opacity": 0.5
           }
         }
       },
@@ -221,6 +228,40 @@
             "color": "0xFF3A3A3A",
             "fontFamily": "RobotoRg",
             "fontSize": 12
+          },
+          "overline": {
+            "color": "0xFFFF0000",
+            "fontFamily": "Roboto",
+            "fontSize": 8,
+            "fontWeight": 400,
+            "opacity": 0.5
+          }
+        }
+      },
+      {
+        "screenName": "cart_screen",
+        "scaffoldBackgroundColor": "0xFFF5FBF7",
+        "backgroundColor": "0xFFFFFFFF",
+        "iconTheme": {
+          "color": "0xFF0BAB64"
+        },
+        "textTheme": {
+          "subtitle1": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoMd",
+            "fontSize": 12
+          },
+          "subtitle2": {
+            "color": "0xFF3A3A3A",
+            "fontFamily": "RobotoRg",
+            "fontSize": 12
+          },
+          "overline": {
+            "color": "0xFFFF0000",
+            "fontFamily": "Roboto",
+            "fontSize": 8,
+            "fontWeight": 400,
+            "opacity": 0.5
           }
         }
       },
