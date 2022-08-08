@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:shopping_poc/features/common/models/product_model.dart';
+import 'package:common/models/product_model.dart';
 
 class CartService {
   final _streamControllers = <String, StreamController<ProductModel?>>{};

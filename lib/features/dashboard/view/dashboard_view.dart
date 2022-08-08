@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
 import 'package:core/base_classes/base_view.dart';
-import 'package:shopping_poc/features/common/mixins/bottom_cart_widget.dart';
-import 'package:shopping_poc/features/common/models/product_model.dart';
-import 'package:shopping_poc/features/dashboard/view/widgets/banner_widget.dart';
-import 'package:shopping_poc/features/dashboard/view/widgets/header_widget.dart';
-import 'package:shopping_poc/features/dashboard/view/widgets/trending_near_widget.dart';
+import 'package:common/models/product_model.dart';
 import 'package:widget_library/buttons/icon_text_button.dart';
 import 'package:widget_library/hex_text/hex_text.dart';
 import 'package:widget_library/image/hex_image_widget.dart';
 import 'package:widget_library/scaffold/hex_scaffold.dart';
 import 'package:widget_library/sub_title/sub_title_widget.dart';
-
-import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
-import 'package:shopping_poc/features/dashboard/view/widgets/categories_widget.dart';
 import 'package:widgets/add_to_cart_button_widget.dart';
 import 'package:widgets/tiles/trending_tile_widget.dart';
 import 'package:widgets/app_search_bar.dart';
+
+import 'package:shopping_poc/features/dashboard/view/widgets/banner_widget.dart';
+import 'package:shopping_poc/features/common/mixins/bottom_cart_widget.dart';
+import 'package:shopping_poc/features/dashboard/view/widgets/header_widget.dart';
+import 'package:shopping_poc/features/dashboard/view/widgets/trending_near_widget.dart';
+
+import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
+import 'package:shopping_poc/features/dashboard/view/widgets/categories_widget.dart';
 
 class DashboardView extends StatelessWidget with BottomCart{
   DashboardView({Key? key}) : super(key: key);

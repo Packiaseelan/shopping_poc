@@ -1,11 +1,12 @@
 import 'dart:async';
 
+import 'package:common/models/product_model.dart';
+import 'package:common/service/cart_service.dart';
 import 'package:core/base_classes/base_coordinator.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:shared_dependencies/shared_dependencies.dart';
-import 'package:shopping_poc/features/common/cart_service.dart';
+
 import 'package:shopping_poc/features/common/mock_data/mock_data.dart';
-import 'package:shopping_poc/features/common/models/product_model.dart';
 import 'package:shopping_poc/global/route_manager/global_route_manager.dart';
 
 part '../state/category_state.dart';

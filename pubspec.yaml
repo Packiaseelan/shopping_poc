@@ -40,6 +40,12 @@ dependencies:
   shared_dependencies:
     path: app_features/shared_dependencies
 
+  common:
+    path: app_features/common
+
+  cart:
+    path: app_features/cart
+
   widgets:
     path: app_features/widgets
 

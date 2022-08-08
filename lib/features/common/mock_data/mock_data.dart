@@ -1,5 +1,5 @@
-import 'package:shopping_poc/features/common/models/category_model.dart';
-import 'package:shopping_poc/features/common/models/product_model.dart';
+import 'package:common/models/product_model.dart';
+import 'package:common/models/category_model.dart';
 
 var categories = [
   CategoryModel(
