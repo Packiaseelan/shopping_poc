@@ -12,11 +12,11 @@ import 'package:widgets/tiles/trending_tile_widget.dart';
 import 'package:widgets/app_search_bar.dart';
 import 'package:cart/mixins/bottom_cart_mixin.dart';
 
-import 'package:shopping_poc/features/dashboard/view/widgets/banner_widget.dart';
-import 'package:shopping_poc/features/dashboard/view/widgets/header_widget.dart';
-import 'package:shopping_poc/features/dashboard/view/widgets/trending_near_widget.dart';
-import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
-import 'package:shopping_poc/features/dashboard/view/widgets/categories_widget.dart';
+import 'package:grocery/features/dashboard/coordinator/dashboard_coordinator.dart';
+import 'package:grocery/features/dashboard/view/widgets/banner_widget.dart';
+import 'package:grocery/features/dashboard/view/widgets/categories_widget.dart';
+import 'package:grocery/features/dashboard/view/widgets/header_widget.dart';
+import 'package:grocery/features/dashboard/view/widgets/trending_near_widget.dart';
 
 class DashboardView extends StatelessWidget with BottomCart {
   DashboardView({Key? key}) : super(key: key);

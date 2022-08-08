@@ -1,12 +1,13 @@
+import 'package:cart/route_manager/cart_route_manager.dart';
 import 'package:common/models/category_model.dart';
 import 'package:common/models/product_model.dart';
+import 'package:common/mock_data/mock_data.dart';
 import 'package:common/service/cart_service.dart';
 import 'package:core/base_classes/base_coordinator.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:shared_dependencies/module_identifiers.dart';
 
-import 'package:shopping_poc/features/common/mock_data/mock_data.dart';
-import 'package:shopping_poc/global/route_manager/global_route_manager.dart';
+import 'package:grocery/route_manager/grocery_route_manager.dart';
 
 part '../state/dashboard_state.dart';
 part '../navigation_handler/dashboard_navigation_handler.dart';

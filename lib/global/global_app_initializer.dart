@@ -1,19 +1,19 @@
-import 'package:cart/route_manager/cart_route_manager.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cart/cart.dart';
+import 'package:cart/route_manager/cart_route_manager.dart';
 import 'package:common/common.dart';
 import 'package:common/service/cart_service.dart';
 import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/storage/i_storage_service.dart';
+import 'package:grocery/grocery.dart';
+import 'package:grocery/route_manager/grocery_route_manager.dart';
 import 'package:network_manager/network_manager.dart';
 import 'package:shared_dependencies/shared_dependencies.dart';
 import 'package:task_manager/task_manager_module.dart';
 import 'package:widget_library/theme/hex_theme.dart';
 
-import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
-import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
 import 'package:shopping_poc/features/landing/coordinator/landing_coordinator.dart';
 import 'package:shopping_poc/features/product_details/coordinator/product_details_coordinator.dart';
 import 'package:shopping_poc/features/splash/coordinator/splash_coordinator.dart';
@@ -25,6 +25,7 @@ class GlobalAppInitializer {
     await theme.initialize();
 
     NavigationManager.registerRouteManager(ModuleIdentifiers.global, GlobalRouteManager());
+    NavigationManager.registerRouteManager(ModuleIdentifiers.grocery, GroceryRouteManager());
     NavigationManager.registerRouteManager(ModuleIdentifiers.cart, CartRouteManager());
 
     final storageService = DIContainer.container.resolve<IStorageService>();
@@ -38,6 +39,7 @@ class GlobalAppInitializer {
 
     CommonModule.registerDependencies();
     CartModule.registerDependencies();
+    GroceryModule.registerDependencies();
 
     return Future.value(theme.defaultTheme);
   }
@@ -46,22 +48,6 @@ class GlobalAppInitializer {
     DIContainer.container.registerFactory(
       (container) => SplashCoordinator(
         SplashNavigationHandler(),
-      ),
-    );
-
-    DIContainer.container.registerFactory(
-      (container) => DashboardCoordinator(
-        DashboardNavigationHandler(),
-        DashboardDataProvider(),
-        container.resolve<CartService>(),
-      ),
-    );
-
-    DIContainer.container.registerFactory(
-      (container) => CategoryCoordinator(
-        CategoryDataProvider(),
-        CategoryNavigationHandler(),
-        container.resolve<CartService>(),
       ),
     );
 

@@ -46,6 +46,9 @@ dependencies:
   cart:
     path: app_features/cart
 
+  grocery:
+    path: app_features/grocery
+
   widgets:
     path: app_features/widgets
 

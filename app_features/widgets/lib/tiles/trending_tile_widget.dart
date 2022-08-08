@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:widget_library/hex_text/hex_text.dart';
 import 'package:widget_library/image/hex_image_widget.dart';
+import 'package:widget_library/theme/builder/theme_builder.dart';
 import 'package:widgets/add_to_cart_button_widget.dart';
 
 class TrendingTileAttribute {
@@ -40,7 +41,10 @@ class TrendingTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
+    return ThemeBuilder(
+      themeName: 'product_detail_tile',
+      builder: (context){
+      return ClipRect(
       child: SizedBox(
         width: 130.w,
         child: AspectRatio(
@@ -93,6 +97,7 @@ class TrendingTileWidget extends StatelessWidget {
         ),
       ),
     );
+    });
   }
 }
 
