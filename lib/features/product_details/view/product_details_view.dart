@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:core/base_classes/base_view.dart';
-import 'package:shopping_poc/features/common/mixins/bottom_cart_widget.dart';
+import 'package:cart/mixins/bottom_cart_mixin.dart';
 import 'package:widget_library/scaffold/hex_scaffold.dart';
 
 import 'package:shopping_poc/features/product_details/coordinator/product_details_coordinator.dart';
 import 'package:shopping_poc/features/widgets/add_to_cart_button.dart';
 
-class ProductDetailsView extends StatelessWidget with BottomCart{
+class ProductDetailsView extends StatelessWidget with BottomCart {
   final Map<String, dynamic> args;
   ProductDetailsView({Key? key, required this.args}) : super(key: key);
 

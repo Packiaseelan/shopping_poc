@@ -1,6 +1,7 @@
-import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_poc/features/cart/view/cart_view.dart';
+
+import 'package:core/navigation/i_route_manager.dart';
+
 import 'package:shopping_poc/features/category/view/category_view.dart';
 import 'package:shopping_poc/features/dashboard/view/dashboard_view.dart';
 import 'package:shopping_poc/features/landing/view/landing_view.dart';
@@ -18,9 +19,6 @@ class GlobalRouteManager extends IRouteManager {
 
       case GlobalRoutes.dashboard:
         return DashboardView();
-
-      case GlobalRoutes.cart:
-        return const CartView();
 
       case GlobalRoutes.category:
         return CategoryView(args: args);

@@ -1,5 +1,7 @@
+import 'package:cart/route_manager/cart_route_manager.dart';
 import 'package:core/base_classes/base_coordinator.dart';
 import 'package:core/navigation/navigation_manager.dart';
+import 'package:shared_dependencies/module_identifiers.dart';
 
 part '../state/landing_state.dart';
 part '../navigation_handler/landing_navigation_handler.dart';

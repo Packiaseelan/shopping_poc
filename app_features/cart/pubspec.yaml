@@ -2,6 +2,8 @@ name: cart
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
+publish_to: 'none'
+branchName: &branchName main
 
 environment:
   sdk: ">=2.17.3 <3.0.0"
@@ -11,10 +13,38 @@ dependencies:
   flutter:
     sdk: flutter
 
+  shared_dependencies:
+    path: ../shared_dependencies
+
+  common:
+    path: ../common
+
+  widgets:
+    path: ../widgets
+
+  core:
+    git:
+      url: https://github.com/Packiaseelan/hex_f_core.git
+      ref: *branchName
+      path: core/app-mobile-core/src
+
+  widget_library:
+    git:
+      url: https://github.com/Packiaseelan/hex_f_core.git
+      ref: *branchName
+      path: widgets/app-mobile-widgets/src
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+
+dependency_overrides:
+  core:
+    path: ../../../hex_f_core/core/app-mobile-core/src/
+
+  widget_library:
+    path: ../../../hex_f_core/widgets/app-mobile-widgets/src/
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:core/base_classes/base_view.dart';
 import 'package:widget_library/scaffold/hex_scaffold.dart';
 
-import 'package:shopping_poc/features/cart/coordinator/cart_coordinator.dart';
+import 'package:cart/features/cart/coordinator/cart_coordinator.dart';
 
 class CartView extends StatelessWidget {
   const CartView({Key? key}) : super(key: key);
@@ -27,6 +27,7 @@ class CartView extends StatelessWidget {
   PreferredSizeWidget _buildAppBar(CartState state) {
     return AppBar(
       elevation: 0,
+      centerTitle: false,
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

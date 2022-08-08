@@ -1,3 +1,4 @@
+import 'package:cart/route_manager/cart_route_manager.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cart/cart.dart';
@@ -11,7 +12,6 @@ import 'package:shared_dependencies/shared_dependencies.dart';
 import 'package:task_manager/task_manager_module.dart';
 import 'package:widget_library/theme/hex_theme.dart';
 
-import 'package:shopping_poc/features/cart/coordinator/cart_coordinator.dart';
 import 'package:shopping_poc/features/category/coordinator/category_coordinator.dart';
 import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
 import 'package:shopping_poc/features/landing/coordinator/landing_coordinator.dart';
@@ -24,10 +24,8 @@ class GlobalAppInitializer {
     final theme = HexTheme();
     await theme.initialize();
 
-    NavigationManager.registerRouteManager(
-      ModuleIdentifiers.global,
-      GlobalRouteManager(),
-    );
+    NavigationManager.registerRouteManager(ModuleIdentifiers.global, GlobalRouteManager());
+    NavigationManager.registerRouteManager(ModuleIdentifiers.cart, CartRouteManager());
 
     final storageService = DIContainer.container.resolve<IStorageService>();
 
@@ -55,12 +53,6 @@ class GlobalAppInitializer {
       (container) => DashboardCoordinator(
         DashboardNavigationHandler(),
         DashboardDataProvider(),
-        container.resolve<CartService>(),
-      ),
-    );
-
-    DIContainer.container.registerFactory(
-      (container) => CartCoordinator(
         container.resolve<CartService>(),
       ),
     );

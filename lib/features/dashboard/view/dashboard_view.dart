@@ -10,16 +10,15 @@ import 'package:widget_library/sub_title/sub_title_widget.dart';
 import 'package:widgets/add_to_cart_button_widget.dart';
 import 'package:widgets/tiles/trending_tile_widget.dart';
 import 'package:widgets/app_search_bar.dart';
+import 'package:cart/mixins/bottom_cart_mixin.dart';
 
 import 'package:shopping_poc/features/dashboard/view/widgets/banner_widget.dart';
-import 'package:shopping_poc/features/common/mixins/bottom_cart_widget.dart';
 import 'package:shopping_poc/features/dashboard/view/widgets/header_widget.dart';
 import 'package:shopping_poc/features/dashboard/view/widgets/trending_near_widget.dart';
-
 import 'package:shopping_poc/features/dashboard/coordinator/dashboard_coordinator.dart';
 import 'package:shopping_poc/features/dashboard/view/widgets/categories_widget.dart';
 
-class DashboardView extends StatelessWidget with BottomCart{
+class DashboardView extends StatelessWidget with BottomCart {
   DashboardView({Key? key}) : super(key: key);
 
   @override

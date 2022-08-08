@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:core/base_classes/base_view.dart';
-import 'package:shopping_poc/features/cart/view/cart_view.dart';
+import 'package:cart/features/cart/view/cart_view.dart';
 import 'package:shopping_poc/features/dashboard/view/dashboard_view.dart';
 import 'package:widget_library/scaffold/hex_scaffold.dart';
 

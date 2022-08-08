@@ -7,7 +7,7 @@ import 'package:shared_dependencies/shared_dependencies.dart';
 import 'package:widget_library/hex_text/hex_text.dart';
 import 'package:widgets/bottom_cart_widget.dart';
 
-import 'package:shopping_poc/global/route_manager/global_route_manager.dart';
+import 'package:cart/route_manager/cart_route_manager.dart';
 
 class _Constants {
   static const caption = 'Items in your cart: ';
@@ -35,7 +35,7 @@ mixin BottomCart {
 
   void _navigateToCart() {
     NavigationManager.navigateTo(
-      '${ModuleIdentifiers.global}-${GlobalRoutes.cart}',
+      '${ModuleIdentifiers.cart}-${CartRoutes.cart}',
       NavigationType.Push,
     );
   }

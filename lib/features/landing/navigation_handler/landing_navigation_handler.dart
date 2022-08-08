@@ -7,6 +7,9 @@ abstract class ILandingNavigationHandler {
 class LandingNavigationHandler extends ILandingNavigationHandler {
   @override
   void navigateToCart() {
-    NavigationManager.navigateTo('global-cart', NavigationType.Push);
+    NavigationManager.navigateTo(
+      '${ModuleIdentifiers.cart}-${CartRoutes.cart}',
+      NavigationType.Push,
+    );
   }
 }
